@@ -19,7 +19,7 @@ import static org.springframework.ldap.query.LdapQueryBuilder.query;
 
 @Repository
 public class UserRepository {
-    public static String BASE_DN = "ou=Users,dc=ssokerberos,dc=org";
+    public static String BASE_DN = "ou=users,dc=security,dc=ssokerberos,dc=org";
     @Autowired
     private LdapTemplate ldapTemplate;
 
