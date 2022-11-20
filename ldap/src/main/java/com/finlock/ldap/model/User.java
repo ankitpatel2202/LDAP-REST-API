@@ -17,9 +17,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @Getter
 @Setter
-@Entry(
-        objectClasses = { "inetOrgPerson", "organizationalPerson", "person", "top" },
-        base = "ou=users,dc=security,dc=ssokerberos,dc=org")
+@Entry(objectClasses = { "inetOrgPerson", "organizationalPerson", "person", "top" })
 public class User implements Comparable<User>{
 
     @Id
