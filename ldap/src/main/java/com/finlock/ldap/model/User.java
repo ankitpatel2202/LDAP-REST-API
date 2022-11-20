@@ -1,7 +1,7 @@
 package com.finlock.ldap.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-//import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,8 +9,6 @@ import lombok.Setter;
 import org.springframework.ldap.odm.annotations.Entry;
 import org.springframework.ldap.odm.annotations.Id;
 import org.springframework.ldap.odm.annotations.Attribute;
-import org.springframework.ldap.odm.annotations.Entry;
-import org.springframework.ldap.odm.annotations.Id;
 
 import javax.naming.Name;
 import javax.validation.constraints.NotBlank;
@@ -28,17 +26,17 @@ public class User implements Comparable<User>{
     @JsonIgnore
     private Name id;
 
-    //@ApiModelProperty(value = "unique id")
+    @ApiModelProperty(value = "unique id")
     @Attribute(name="uid")
     @NotBlank
     private String uid;
 
-    //@ApiModelProperty(value = "First name")
+    @ApiModelProperty(value = "First name")
     @Attribute(name="cn")
     @NotBlank
     private String cn;
 
-    //@ApiModelProperty(value = "Last name")
+    @ApiModelProperty(value = "Last name")
     @Attribute(name="sn")
     @NotBlank
     private String sn;

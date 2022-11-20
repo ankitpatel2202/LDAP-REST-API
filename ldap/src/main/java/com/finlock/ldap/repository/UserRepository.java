@@ -35,10 +35,12 @@ public class UserRepository {
     }
 
     protected void mapToContext(User user, DirContextOperations context) {
-        context.setAttributeValues("objectclass", new String[] {"top", "person", "organizationalPerson", "inetOrgPerson" });
+        context.setAttributeValues("objectclass", new String[] {"top", "person", "organizationalPerson", "inetOrgPerson", "krb5kdcentry", "krb5principal" });
         context.setAttributeValue("cn", user.getCn());
         context.setAttributeValue("sn", user.getSn());
         context.setAttributeValue("uid", user.getUid());
+        context.setAttributeValue("krb5PrincipalName", user.getUid() + "@" + "SSOKERBEROS.ORG");
+        context.setAttributeValue("krb5KeyVersionNumber", "0");
     }
 
     private Name buildDn(User user) {
