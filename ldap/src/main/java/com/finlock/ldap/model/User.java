@@ -1,6 +1,7 @@
 package com.finlock.ldap.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,11 +40,22 @@ public class User implements Comparable<User>{
     @NotBlank
     private String sn;
 
+    @ApiModelProperty(value = "mail")
+    @Attribute(name="mail")
+    @NotBlank
+    private String mail;
+
+    @ApiModelProperty(value = "userPassword")
+    @Attribute(name="userPassword")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String userPassword;
+
     @Override
     public int compareTo(User user) {
         boolean allAttributesEqual = getUid().equals(user.getUid())
                 && getCn().equals(user.getCn())
-                && getSn().equals(user.getSn());
+                && getSn().equals(user.getSn())
+                && getMail().equals(user.getMail());
         return  allAttributesEqual ? 0 : 1;
     }
 
@@ -54,6 +66,7 @@ public class User implements Comparable<User>{
                 ", uid='" + uid + '\'' +
                 ", cn='" + cn + '\'' +
                 ", sn='" + sn + '\'' +
+                ", mail='" + mail + '\''  +
                 '}';
     }
 }

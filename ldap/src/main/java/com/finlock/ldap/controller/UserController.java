@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController()
 @ApiOperation(nickname = "User Endpoint", value = "manage users")
-@RequestMapping(path = "/Users")
+@RequestMapping(path = "/users")
 public class UserController {
 
     @Autowired
@@ -64,4 +64,13 @@ public class UserController {
         userRepo.delete(uid);
     }
 
+    @ApiOperation("Updating user.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully updated user."),
+            @ApiResponse(code = 400, message = "Bad request.")
+    })
+    @PutMapping(path = "/{uid}")
+    public void updateUser(@PathVariable("uid") String uid, @RequestBody User user){
+        userRepo.updateUsers(uid,user);
+    }
 }
